@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/demoapp
+hooks:
+  ApplicationStop:
+    - location: scripts/deregister_from_elb.sh
+  AfterInstall:
+    - location: scripts/run_chef.sh
+  ApplicationStart:
+    - location: scripts/app_start.sh
+  ValidateService:
+    - location: scripts/register_with_elb.sh
