@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /index.html
     destination: /var/www/html/
+    overwrite: true
 hooks:
   ApplicationStop:
     - location: scripts/deregister_from_elb.sh
